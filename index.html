@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch-API Basic</title>
+</head>
+<body>
+    <script>
+        
+        document.body.style.width = "100vw";
+
+        fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(json => {
+            const products = json;
+            
+
+                for(let i =0; i<20; i++){
+
+                    var card = document.createElement('div');
+
+                    card.className = 'card';
+                    card.style.width = "85%";
+                    card.style.border = "1px solid #ccc";
+                    card.style.borderRadius = "12px";
+                    card.style.marginLeft = "auto";
+                    card.style.marginRight = "auto";
+                    card.style.marginTop = "10px";
+                    card.style.marginBottom = "10px";
+                    card.style.display = "flex";
+                    card.style.columnGap = "15px";
+                    
+
+                    document.body.appendChild(card);
+
+
+                    var imSide = document.createElement('div');
+
+                    imSide.className = 'card-img';
+
+                    card.appendChild(imSide);
+
+
+                    var txtSide = document.createElement('div');
+
+                    txtSide.className = 'card-body';
+
+                    card.appendChild(txtSide);
+
+
+                    var title = document.createElement('h2');
+
+                    title.textContent = products[i].title;
+                    title.style.fontFamily = "sans-serif";
+
+                    txtSide.appendChild(title);
+
+
+                    var price = document.createElement('p');
+
+                    price.textContent = '$' + products[i].price;
+                    price.style.fontWeight = "bold";
+                    price.style.fontSize = "18px";
+                    price.style.margin = "8px 0";
+                    txtSide.appendChild(price);
+
+                    var category = document.createElement('p');
+
+                    category.textContent = 'Category : ' + products[i].category;
+                    category.style.fontFamily = "Cursive";
+                    category.style.margin = "0";
+                    txtSide.appendChild(category);
+
+
+                    var description = document.createElement('p');
+
+                    description.textContent = products[i].description;
+                    description.style.fontFamily = "sans-serif";
+                    txtSide.appendChild(description);
+
+                    
+
+                    var rating = document.createElement('p');
+
+                    rating.textContent = 'Rating : ' + products[i].rating.rate + ' / 5';
+                    rating.style.fontFamily = "sans-serif";
+                    rating.style.color = " #ff6666";
+                    txtSide.appendChild(rating);
+
+                    var buton = document.createElement('p');
+
+                    buton.textContent = 'Buy Now';
+                    buton.style.cursor = "pointer";
+                    buton.style.color = "#fff";
+                    buton.style.backgroundColor = "#0d6efd";
+                    buton.style.width = "100px";
+                    buton.style.textAlign = "center";
+                    buton.style.fontWeight = "400";
+                    buton.style.padding = "6px 12px";
+                    buton.style.fontSize = "16px";
+                    buton.style.borderRadius = ".25rem";
+                    buton.style.border = "1px solid transparent";
+                    buton.style.lineHeight = "1.5";
+                    txtSide.appendChild(buton);
+
+
+                    
+
+
+                    var picture = document.createElement('img');
+
+                    picture.src = products[i].image;
+                    picture.style.width = "200px";
+                    picture.style.height = "200px";
+                    picture.style.padding = "10px";
+
+                    imSide.appendChild(picture);
+
+                }
+
+                
+                
+            
+
+
+
+        })
+        
+
+        
+    </script>
+</body>
+</html>
